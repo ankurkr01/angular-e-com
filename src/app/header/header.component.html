@@ -1,0 +1,37 @@
+<nav class="nav w-[100vw] flex justify-between p-[4px] mr-2">
+  <h1 class="text-violet-900  "><a routerLink="/">LOGO</a></h1>
+  <div *ngIf = "menuType !== 'seller'" class="nav-search">
+    <input type="text " #searchval  (keyup)="search($event)" (blur)="hidesearch()" placeholder="Search" />
+    <button (click)="submitSearch(searchval.value)" >Search</button>
+
+    <ul class="searchitem" *ngIf="searchResult">
+      <li *ngFor="let item of searchResult" class=" border-s-orange-100 border-emerald-100"  >
+        <a (mousedown)="redirecttodetail(item.id)" class="cursor-pointer text-blue-400">{{item.name}}</a>
+        
+      </li>
+    </ul>
+  </div>
+
+ <div [ngSwitch]="menuType" class="pr-4">
+  <ul *ngSwitchCase="'default'">
+    <li><a routerLink="/"> Home </a></li>
+    <li><a routerLink="/seller-auth"> Seller </a></li>
+    <li><a routerLink="/user-auth"> Login/Signup </a></li>
+    <li><a [routerLink]="cartItems>0?'/cart':null"> Cart({{cartItems}}) </a></li>
+  </ul>
+
+  <ul *ngSwitchCase="'user'">
+    <li><a routerLink="/"> Home </a></li>
+    <li><a (click)="userlogout()"> Logout </a></li>
+    <li><a routerLink="/cart"> Cart({{cartItems}}) </a></li>
+    <li><a routerLink="#"> {{userName | titlecase}} </a></li>
+  </ul>
+
+  <ul *ngSwitchCase="'seller'">
+    <li><a routerLink="/seller-add-product"> Add Product </a></li>
+    <li><a routerLink="/seller-home"> List </a></li>
+    <li><a (click)="logout()"> Logout </a></li>
+    <li><a routerLink="#"> {{sellerName | titlecase}}</a></li>
+  </ul>
+ </div>
+</nav>

@@ -1,0 +1,39 @@
+<ngb-carousel *ngIf="popularpro" class="w-[100vw]">
+	<ng-template *ngFor="let item of popularpro"  ngbSlide >
+		<div class="picsum-img-wrapper">
+			<a routerLink="/detail/{{item.id}}"><img src="{{item.image}}" alt="Random first slide" class="w-full h-[90vh] p-[4px] " /></a>
+		</div>
+		<div class="carousel-caption">
+			<h3>{{item.name}}</h3>
+			<p>{{item.description}}</p>
+		</div>
+	</ng-template>
+ 
+</ngb-carousel>
+
+ 
+
+<h1 class="flex justify-center text-blue-700 m-10 font-bold text-2xl mb-2">
+    Trending Products
+</h1>
+<div *ngIf="productlist" class="flex    flex-row flex-wrap overflow-auto w-[100vw] ">
+
+
+<div *ngFor="let item of productlist" class="max-w-[300px] rounded overflow-visible  shadow-xl  justify-center border-b-2 border-black-300 mx-[7px] transition-all hover:transform-cpu">
+    
+    <div>
+        <a routerLink="/detail/{{item.id}}"><img class="w-full" src="{{item.image}}" alt="product"  ></a>
+    </div>
+    <div class="flex flex-col justify-center mx-10 border-solid border-b-2 border-black-300">
+        <a routerLink="/detail/{{item.id}}"><p>name: {{item.name}}</p></a>
+        <p>price: {{item.price}}</p>
+        <p>color: {{item.color}}</p>
+    </div>
+
+    <div class="flex flex-col justify-center mx-11 p-2 border-b-2 border-black-300 items-end">
+       <p class="text-blue-300"> view details</p>
+       <p class="text-green-400">Add to cart</p>
+    </div>
+   
+</div>
+</div>

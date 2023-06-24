@@ -1,0 +1,22 @@
+<div *ngFor="let item of allsearchprod" [ngSwitch]="resultavailable"> 
+    <div *ngSwitchCase="'available'">
+        <div class="flex my-4 mx-auto  w-[800px] flex-wrap  border-solid border-t-2 border-gray-200"   >
+            <div class="  p-3 ">
+               <a routerLink="/detail/{{item.id}}"> <img src="{{item.image}}" alt="product" class="object-contain w-[100%] h-[150px]"></a>
+            </div>
+            <div class=" w-[300px] my-4  ">
+                <h6> <a routerLink="/detail/{{item.id}}">{{item.name}} </a></h6>
+                <p><b>price : {{item.price}}</b></p>
+                <p><span>color: Red</span> , <span> category: {{item.category}}</span></p>
+                <p>{{item.description}}</p>
+            </div>
+          
+        </div>
+    </div>
+    <div *ngSwitchCase="'notavailable'" >
+        <div class="text-blue-950">
+            <h1>product not found</h1>
+        </div>
+    </div>
+     
+</div>

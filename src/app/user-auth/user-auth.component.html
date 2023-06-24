@@ -1,0 +1,65 @@
+<div class="seller-auth flex justify-center items-center">
+    <div *ngIf="!showlogin"  class="sign-up">
+      <h1 class="text-3xl">User sign-up</h1>
+      <form #sellerSignUp="ngForm" (ngSubmit)="signUp(sellerSignUp.value)" class="common-form">
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Enter Name"
+          name="name"
+          ngModel
+        />
+        <input
+        type="text"
+        class="form-input"
+        placeholder="Enter Email"
+        name="email"
+        ngModel
+      />
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Enter Password"
+          name="password"
+          ngModel
+        />
+       
+        <button class="form-button">Sign Up</button>
+        <a class="auth-toggle-link cursor-pointer" (click)="buttonToggle()" >Already have account? Click for Login</a>
+      </form>
+    </div>
+    <!-- login  -->
+    
+  
+    <div *ngIf="showlogin" class="login">
+      <h1 class="text-3xl">User Login</h1>
+      <p class="error-p">{{authError}}</p>
+      <form #userLogin="ngForm" (ngSubmit)="login(userLogin.value)"  class="common-form">
+        <input
+        type="text"
+        class="form-input"
+        placeholder="Enter Email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      />
+      <p class="text-red-500"><span *ngIf="email.invalid && email.touched" >Please enter valid value</span></p>
+        <input
+          type="password"
+          class="form-input"
+          placeholder="Enter Password"
+          name="password"
+          minlength="3"
+          ngModel
+          #password="ngModel"
+        />
+      <p class="text-red-500"><span *ngIf="password.invalid && password.touched" >Please enter valid value</span></p>
+
+        <button class="form-button disabled:cursor-not-allowed" [disabled]="userLogin.invalid" >Login</button>
+        <a class="auth-toggle-link cursor-pointer" (click)="buttonToggle()" >Don't have account? Click for sign-up</a>
+  
+      </form>
+    </div>
+  </div>     

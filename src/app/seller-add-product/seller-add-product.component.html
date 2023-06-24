@@ -1,0 +1,53 @@
+<div class="add-product flex justify-center ">
+    <h1 class="text-violet-600 flex justify-center  my-11 font-bold text-3xl">Add New Product</h1>
+    <p class="message-p">{{addProductMessage}}</p>
+    <form #addProduct="ngForm"
+    (ngSubmit)="submit(addProduct.value)"
+     class="common-form m-24 ">
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Enter Product Name"
+        name="name"
+        ngModel
+      />
+      <input
+      type="text"
+      class="form-input"
+      placeholder="Enter Product Price"
+      name="price"
+      ngModel
+    />
+    <input
+    type="text"
+    class="form-input"
+    placeholder="Enter Product Category"
+    name="category"
+    ngModel
+  />
+  <input
+  type="text"
+  class="form-input"
+  placeholder="Enter Product Color"
+  name="color"
+  ngModel
+  />
+  <textarea
+  type="text"
+  class="form-input"
+  placeholder="Enter Product Description"
+  name="description"
+  ngModel
+  ></textarea>
+  
+  <input
+  type="text"
+  class="form-input"
+  placeholder="Enter Product Image URL"
+  name="image"
+  ngModel
+  />
+  <button class="form-button">Add Product</button>
+  
+    </form>
+  </div>
